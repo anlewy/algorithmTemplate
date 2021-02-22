@@ -22,8 +22,6 @@ vector<vector<pair<int, int>>> readGraph(string filename) {
         infile >> u >> v >> w;
         graph[u].push_back(make_pair(v, w));
     }
-    int src, dst;
-    infile >> src >> dst;
 //    for (int u = 0; u < m; u++) {
 //        for (int j = 0; j < graph[u].size(); j++) {
 //            cout << u << " --> " << graph[u][j].first << " : " << graph[u][j].second << endl;
@@ -36,7 +34,7 @@ TEST(testCase, testDijkstra) {
     auto graph = readGraph("");
     int src = 0;
     int dst = 4;
-    int res = dijkstra(graph, 0, 4);
+    int res = dijkstra(graph, src, dst);
     cout << src << " --> " << dst << "  :  " << res << endl;
 }
 
