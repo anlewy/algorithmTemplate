@@ -8,15 +8,18 @@
 
 int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst) {
     int n = graph.size();
-    int *dist = new int[n];
-    bool *been = new bool[n];
     const int INF = 0x3f3f3f3f;
+    std::vector<int> dist(n, INF);
+    std::vector<bool> been(n, false);
     for (int i = 0; i < n; i++) {
         dist[i] = INF;
         been[i] = false;
     }
     dist[src] = 0;
     been[src] = true;
+    for (auto edge : graph[src]) {
+        dist[edge.first] = edge.second;
+    }
     for (int i = 0; i < n; i++) {
         int minV = INF;
         int minP = -1;
