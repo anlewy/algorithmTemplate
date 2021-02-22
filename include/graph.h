@@ -7,5 +7,6 @@
 #define ALGORITHMTEMPLATE_GRAPH_H
 
 int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst);
+int dijkstraV2(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst);
 
 #endif //ALGORITHMTEMPLATE_GRAPH_H

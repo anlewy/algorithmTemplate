@@ -4,11 +4,14 @@
 //
 
 #include <vector>
+#include <queue>
 #include "graph.h"
 
+const int INF = 0x3f3f3f3f;
+
+// 对图的唯一要求是，能遍历某指定点的所有边
 int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst) {
     int n = graph.size();
-    const int INF = 0x3f3f3f3f;
     std::vector<int> dist(n, INF);
     std::vector<bool> been(n, false);
     for (int i = 0; i < n; i++) {
@@ -42,4 +45,47 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int 
     }
 
     return dist[dst] == INF ? -1 : dist[dst];
+}
+
+struct distInfo {
+    int u;
+    int v;
+    int dist;
+    distInfo() {}
+    distInfo(int u, int v, int dist): u(u), v(v), dist(dist) { }
+    bool operator<(const distInfo &x) const {
+        return this->dist < x.dist;
+    }
+};
+
+int dijkstraV2(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst) {
+    int n = graph.size();
+    std::vector<int> dist(n, INF);
+    std::vector<bool> been(n, false);
+    for (int i = 0; i < n; i++) {
+        dist[i] = INF;
+        been[i] = false;
+    }
+    dist[src] = 0;
+    been[src] = true;
+
+    std::priority_queue<distInfo> PQ;
+    for (auto edge : graph[src]) {
+        PQ.push(distInfo(src, edge.first, edge.second));
+    }
+
+    while (!PQ.empty()) {
+        auto di = PQ.top(); PQ.pop();
+        if (been[di.v]) {
+            continue;
+        }
+        been[di.v] = true;
+        for (auto edge : graph[di.v]) {
+            if (dist[di.v] + edge.second < dist[edge.first]) {
+                PQ.push(distInfo(src, edge.first, dist[di.v] + edge.second));
+            }
+        }
+    }
+
+    return -1;
 }

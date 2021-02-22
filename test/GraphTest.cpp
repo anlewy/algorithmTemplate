@@ -38,6 +38,14 @@ TEST(testCase, testDijkstra) {
     cout << src << " --> " << dst << "  :  " << res << endl;
 }
 
+TEST(testCase, testDijkstraV2) {
+    auto graph = readGraph("");
+    int src = 0;
+    int dst = 4;
+    int res = dijkstraV2(graph, src, dst);
+    cout << src << " --> " << dst << "  :  " << res << endl;
+}
+
 
 int main() {
 
