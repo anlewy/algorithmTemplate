@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/sort.h
+
+/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HillSort.cpp
+sort.h
+/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/sort.h
+

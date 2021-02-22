@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/search.h
+
+/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/search/binarySearch.cpp
+search.h
+/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/search/search.h
+
