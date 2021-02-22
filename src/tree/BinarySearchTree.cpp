@@ -3,19 +3,19 @@
 // @create 2021/2/21 10:38 下午
 //
 
-class BinarySearchTree {
-    int key;
-    BinarySearchTree *left, *right;
-    BinarySearchTree() { }
-    BinarySearchTree(int e): key(e) { }
-};
-
 struct TreeNode {
     int key;
     TreeNode *left, *right;
     TreeNode(): key(0), left(nullptr), right(nullptr) {}
     TreeNode(int v): key(v), left(nullptr), right(nullptr) {}
 };
+
+class BinarySearchTree {
+    TreeNode *root;
+    BinarySearchTree(): root(nullptr) { }
+    BinarySearchTree(int e): key(e) { }
+};
+
 
 TreeNode *insert(TreeNode *root, int value) {
     if (root == nullptr) {

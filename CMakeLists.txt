@@ -24,6 +24,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 aux_source_directory(./src SRC_LIST)
 aux_source_directory(./src/sort SRC_LIST)
 aux_source_directory(./src/search SRC_LIST)
+aux_source_directory(./src/graph SRC_LIST)
 set(SOURCE_FLIES main.cpp )
 
 
@@ -37,3 +38,6 @@ target_link_libraries(SortTest gtest)
 
 add_executable(SearchTest test/SearchTest.cpp ${SRC_LIST})
 target_link_libraries(SearchTest gtest)
+
+add_executable(GraphTest test/GraphTest.cpp ${SRC_LIST})
+target_link_libraries(GraphTest gtest)
