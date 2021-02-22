@@ -6,7 +6,7 @@
 #include <iostream>
 #include "algos.h"
 #include "gtest/gtest.h"
-using namespace std;
+#include <algorithm>
 
 int *buildArr(int n) {
     int *arr = new int[n];
@@ -16,79 +16,81 @@ int *buildArr(int n) {
     return arr;
 }
 
+bool testSorted(const int *arr, int n, void (*sortFunc)(int *, int)) {
+    int *brr = new int[n];
+    int *crr = new int[n];
+    for (int i = 0; i < n; i++) {
+        brr[i] = arr[i];
+        crr[i] = arr[i];
+    }
+    std::sort(brr, brr+n);
+    sortFunc(crr, n);
+    for (int i = 0; i < n; i++) {
+        if (brr[i] != crr[i])
+            return false;
+    }
+    return true;
+}
+
 TEST(TestCase, testBubbleSort) {
-    cout << "\nin testBubbleSort.\n";
+    std::cout << "\nin testBubbleSort.\n";
     const int n = 200;
     int *arr = buildArr(n);
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    bubbleSort(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
+    EXPECT_EQ(true, testSorted(arr, n, bubbleSort));
 }
 
 TEST(TestCase, testSelectSort) {
-    cout << "\nin testSelectSort.\n";
+    std::cout << "\nin testSelectSort.\n";
     const int n = 200;
     int *arr = buildArr(n);
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    selectSort(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
+    EXPECT_EQ(true, testSorted(arr, n, selectSort));
 }
 
 TEST(TestCase, testInsertSort) {
-    cout << "\nin testInsertSort.\n";
+    std::cout << "\nin testInsertSort.\n";
     const int n = 200;
     int *arr = buildArr(n);
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    insertSort(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
+    EXPECT_EQ(true, testSorted(arr, n, insertSort));
 }
 
 TEST(TestCase, testHillSort) {
-    cout << "\nin testHillSort.\n";
+    std::cout << "\nin testHillSort.\n";
     const int n = 200;
     int *arr = buildArr(n);
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    hillSort(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
+    EXPECT_EQ(true, testSorted(arr, n, hillSort));
 }
 
 
 TEST(TestCase, testMergeSort) {
-    cout << "\nin testMergeSort:\n";
+    std::cout << "\nin testMergeSort:\n";
     const int n = 200;
     int *arr = buildArr(n);
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    mergeSort(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
+    EXPECT_EQ(true, testSorted(arr, n, mergeSort));
 }
 
 
 // test mergeSortV2
 TEST(TestCase, testMergeSortV2){
-    cout << "\nin testMergeSortV2:\n";
+    std::cout << "\nin testMergeSortV2:\n";
     const int n = 200;
     int *arr = buildArr(n);
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    mergeSortV2(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
+    EXPECT_EQ(true, testSorted(arr, n, mergeSortV2));
 }
 
 // test quickSort
 TEST(TestCase, testquickSort) {
-    cout << "\nin testquickSort:\n";
+    std::cout << "\nin testquickSort:\n";
     const int n = 600;
     int *arr = buildArr(n);
-    EXPECT_EQ(false, is_sorted(arr, arr+n));
-    quickSort(arr, n);
-    EXPECT_EQ(true, is_sorted(arr, arr+n));
+    EXPECT_EQ(true, testSorted(arr, n, quickSort));
+}
+
+// test heapSort
+TEST(TestCase, heapSort) {
+    std::cout << "\nin testHeapSort:\n";
+    const int n = 600;
+    int *arr = buildArr(n);
+    EXPECT_EQ(true, testSorted(arr, n, heapSort));
 }
 
 int main() {

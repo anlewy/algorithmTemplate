@@ -360,6 +360,39 @@ src/sort/BubbleSort.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/BubbleSort.cpp.s
 .PHONY : src/sort/BubbleSort.cpp.s
 
+src/sort/HeapSort.o: src/sort/HeapSort.cpp.o
+
+.PHONY : src/sort/HeapSort.o
+
+# target to build an object file
+src/sort/HeapSort.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AlgorithmTemplate.dir/build.make CMakeFiles/AlgorithmTemplate.dir/src/sort/HeapSort.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SearchTest.dir/build.make CMakeFiles/SearchTest.dir/src/sort/HeapSort.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/HeapSort.cpp.o
+.PHONY : src/sort/HeapSort.cpp.o
+
+src/sort/HeapSort.i: src/sort/HeapSort.cpp.i
+
+.PHONY : src/sort/HeapSort.i
+
+# target to preprocess a source file
+src/sort/HeapSort.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AlgorithmTemplate.dir/build.make CMakeFiles/AlgorithmTemplate.dir/src/sort/HeapSort.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SearchTest.dir/build.make CMakeFiles/SearchTest.dir/src/sort/HeapSort.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/HeapSort.cpp.i
+.PHONY : src/sort/HeapSort.cpp.i
+
+src/sort/HeapSort.s: src/sort/HeapSort.cpp.s
+
+.PHONY : src/sort/HeapSort.s
+
+# target to generate assembly for a file
+src/sort/HeapSort.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AlgorithmTemplate.dir/build.make CMakeFiles/AlgorithmTemplate.dir/src/sort/HeapSort.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SearchTest.dir/build.make CMakeFiles/SearchTest.dir/src/sort/HeapSort.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/HeapSort.cpp.s
+.PHONY : src/sort/HeapSort.cpp.s
+
 src/sort/HillSort.o: src/sort/HillSort.cpp.o
 
 .PHONY : src/sort/HillSort.o
@@ -558,39 +591,6 @@ src/sort/SelectSort.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/SelectSort.cpp.s
 .PHONY : src/sort/SelectSort.cpp.s
 
-src/sort/common.o: src/sort/common.cpp.o
-
-.PHONY : src/sort/common.o
-
-# target to build an object file
-src/sort/common.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AlgorithmTemplate.dir/build.make CMakeFiles/AlgorithmTemplate.dir/src/sort/common.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SearchTest.dir/build.make CMakeFiles/SearchTest.dir/src/sort/common.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/common.cpp.o
-.PHONY : src/sort/common.cpp.o
-
-src/sort/common.i: src/sort/common.cpp.i
-
-.PHONY : src/sort/common.i
-
-# target to preprocess a source file
-src/sort/common.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AlgorithmTemplate.dir/build.make CMakeFiles/AlgorithmTemplate.dir/src/sort/common.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SearchTest.dir/build.make CMakeFiles/SearchTest.dir/src/sort/common.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/common.cpp.i
-.PHONY : src/sort/common.cpp.i
-
-src/sort/common.s: src/sort/common.cpp.s
-
-.PHONY : src/sort/common.s
-
-# target to generate assembly for a file
-src/sort/common.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AlgorithmTemplate.dir/build.make CMakeFiles/AlgorithmTemplate.dir/src/sort/common.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SearchTest.dir/build.make CMakeFiles/SearchTest.dir/src/sort/common.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SortTest.dir/build.make CMakeFiles/SortTest.dir/src/sort/common.cpp.s
-.PHONY : src/sort/common.cpp.s
-
 test/SearchTest.o: test/SearchTest.cpp.o
 
 .PHONY : test/SearchTest.o
@@ -673,6 +673,9 @@ help:
 	@echo "... src/sort/BubbleSort.o"
 	@echo "... src/sort/BubbleSort.i"
 	@echo "... src/sort/BubbleSort.s"
+	@echo "... src/sort/HeapSort.o"
+	@echo "... src/sort/HeapSort.i"
+	@echo "... src/sort/HeapSort.s"
 	@echo "... src/sort/HillSort.o"
 	@echo "... src/sort/HillSort.i"
 	@echo "... src/sort/HillSort.s"
@@ -691,9 +694,6 @@ help:
 	@echo "... src/sort/SelectSort.o"
 	@echo "... src/sort/SelectSort.i"
 	@echo "... src/sort/SelectSort.s"
-	@echo "... src/sort/common.o"
-	@echo "... src/sort/common.i"
-	@echo "... src/sort/common.s"
 	@echo "... test/SearchTest.o"
 	@echo "... test/SearchTest.i"
 	@echo "... test/SearchTest.s"

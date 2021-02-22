@@ -7,6 +7,9 @@ CMakeFiles/SortTest.dir/src/search/binarySearch.cpp.o
 CMakeFiles/SortTest.dir/src/sort/BubbleSort.cpp.o
  ../include/sort.h
  /Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/BubbleSort.cpp
+CMakeFiles/SortTest.dir/src/sort/HeapSort.cpp.o
+ ../include/sort.h
+ /Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HeapSort.cpp
 CMakeFiles/SortTest.dir/src/sort/HillSort.cpp.o
  ../include/sort.h
  /Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HillSort.cpp
@@ -25,9 +28,6 @@ CMakeFiles/SortTest.dir/src/sort/QuickSort.cpp.o
 CMakeFiles/SortTest.dir/src/sort/SelectSort.cpp.o
  ../include/sort.h
  /Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/SelectSort.cpp
-CMakeFiles/SortTest.dir/src/sort/common.cpp.o
- ../include/sort.h
- /Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/common.cpp
 CMakeFiles/SortTest.dir/test/SortTest.cpp.o
  ../googletest/googletest/include/gtest/gtest-death-test.h
  ../googletest/googletest/include/gtest/gtest-matchers.h

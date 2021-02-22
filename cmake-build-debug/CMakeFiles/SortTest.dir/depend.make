@@ -7,6 +7,9 @@ CMakeFiles/SortTest.dir/src/search/binarySearch.cpp.o: ../src/search/binarySearc
 CMakeFiles/SortTest.dir/src/sort/BubbleSort.cpp.o: ../include/sort.h
 CMakeFiles/SortTest.dir/src/sort/BubbleSort.cpp.o: ../src/sort/BubbleSort.cpp
 
+CMakeFiles/SortTest.dir/src/sort/HeapSort.cpp.o: ../include/sort.h
+CMakeFiles/SortTest.dir/src/sort/HeapSort.cpp.o: ../src/sort/HeapSort.cpp
+
 CMakeFiles/SortTest.dir/src/sort/HillSort.cpp.o: ../include/sort.h
 CMakeFiles/SortTest.dir/src/sort/HillSort.cpp.o: ../src/sort/HillSort.cpp
 
@@ -24,9 +27,6 @@ CMakeFiles/SortTest.dir/src/sort/QuickSort.cpp.o: ../src/sort/QuickSort.cpp
 
 CMakeFiles/SortTest.dir/src/sort/SelectSort.cpp.o: ../include/sort.h
 CMakeFiles/SortTest.dir/src/sort/SelectSort.cpp.o: ../src/sort/SelectSort.cpp
-
-CMakeFiles/SortTest.dir/src/sort/common.cpp.o: ../include/sort.h
-CMakeFiles/SortTest.dir/src/sort/common.cpp.o: ../src/sort/common.cpp
 
 CMakeFiles/SortTest.dir/test/SortTest.cpp.o: ../googletest/googletest/include/gtest/gtest-death-test.h
 CMakeFiles/SortTest.dir/test/SortTest.cpp.o: ../googletest/googletest/include/gtest/gtest-matchers.h

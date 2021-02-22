@@ -461,6 +461,11 @@
 			<Option target="SearchTest"/>
 			<Option target="SortTest"/>
 		</Unit>
+		<Unit filename="/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HeapSort.cpp">
+			<Option target="AlgorithmTemplate"/>
+			<Option target="SearchTest"/>
+			<Option target="SortTest"/>
+		</Unit>
 		<Unit filename="/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HillSort.cpp">
 			<Option target="AlgorithmTemplate"/>
 			<Option target="SearchTest"/>
@@ -487,11 +492,6 @@
 			<Option target="SortTest"/>
 		</Unit>
 		<Unit filename="/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/SelectSort.cpp">
-			<Option target="AlgorithmTemplate"/>
-			<Option target="SearchTest"/>
-			<Option target="SortTest"/>
-		</Unit>
-		<Unit filename="/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/common.cpp">
 			<Option target="AlgorithmTemplate"/>
 			<Option target="SearchTest"/>
 			<Option target="SortTest"/>

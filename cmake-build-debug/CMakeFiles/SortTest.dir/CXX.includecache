@@ -8,7 +8,9 @@
 
 ../include/sort.h
 
-/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HillSort.cpp
+/Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/HeapSort.cpp
 sort.h
 /Users/admin/CLionProjects/FD/AlgorithmTemplate/src/sort/sort.h
+algorithm
+-
 
