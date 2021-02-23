@@ -42,18 +42,27 @@ private:
     int nodeNum;
     int edgeNum;
     bool directed;
+    bool weighted;
     std::vector<std::vector<Edge>> adj;
     std::vector<Edge> edges;
 
 public:
     Graph() {}
-    Graph(std::string filename);
-    Graph(std::string filename, bool directed);
+
+    // 若未指定有向性、带权性，默认为有向图、带权图
+    Graph(std::string filename): Graph(filename, true, true) { }
+
+    // 若未指定是否带权，默认为带权图
+    Graph(std::string filename, bool directed): Graph(filename, directed, true) { }
+
+    Graph(std::string filename, bool directed, bool weighted);
+
     std::vector<Edge> getNodeEdges(int u);
     std::vector<Edge> getEdges();
     int getNodeNum() { return nodeNum; }
     int getEdgeNum() { return edgeNum; }
-    bool isDirected() {return directed; }
+    bool isDirected() { return directed; }
+    bool isWeighted() { return weighted; }
 };
 
 
