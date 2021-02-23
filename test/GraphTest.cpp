@@ -54,6 +54,13 @@ TEST(testCase, testKruskal) {
     EXPECT_EQ(res, 26);
 }
 
+TEST(testCase, testPrim) {
+    auto graph = Graph("../source/graph_input_1.in", false);
+    int res = prim(graph);
+    cout << "res = " << res << endl;
+    EXPECT_EQ(res, 26);
+}
+
 
 int main() {
 

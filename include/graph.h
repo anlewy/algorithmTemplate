@@ -41,6 +41,7 @@ class Graph {
 private:
     int nodeNum;
     int edgeNum;
+    bool directed;
     std::vector<std::vector<Edge>> adj;
     std::vector<Edge> edges;
 
@@ -52,6 +53,7 @@ public:
     std::vector<Edge> getEdges();
     int getNodeNum() { return nodeNum; }
     int getEdgeNum() { return edgeNum; }
+    bool isDirected() {return directed; }
 };
 
 
@@ -64,5 +66,6 @@ int dijkstraV2(Graph &graph, int src, int dst);
 
 // 最小生成树算法
 int kruskal(Graph &graph);
+int prim(Graph &graph);
 
 #endif //ALGORITHMTEMPLATE_GRAPH_H

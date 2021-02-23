@@ -9,6 +9,7 @@
 #include <string>
 
 Graph::Graph(std::string filename) {
+    directed = true;
     std::ifstream infile(filename);
     infile >> nodeNum >> edgeNum;  // n 是节点数量，编号0, 1, ..., n-1。 m是边的数量
     adj = std::vector<std::vector<Edge>>(nodeNum, std::vector<Edge>(0));
@@ -25,16 +26,16 @@ Graph::Graph(std::string filename, bool directed) {
     if (directed) {
         Graph(filename);
     } else {
+        directed = false;
         std::ifstream infile(filename);
         infile >> nodeNum >> edgeNum;  // n 是节点数量，编号0, 1, ..., n-1。 m是边的数量
         adj = std::vector<std::vector<Edge>>(nodeNum, std::vector<Edge>(0));
         int u, v, weight;
         for (int i = 0; i < edgeNum; i++) {
             infile >> u >> v >> weight;
-            auto edge = Edge(u, v, weight);
-            edges.push_back(edge);
-            adj[u].push_back(edge);
-            adj[v].push_back(edge);
+            edges.push_back(Edge(u, v, weight));
+            adj[u].push_back(Edge(u, v, weight));
+            adj[v].push_back(Edge(v, u, weight));
 
         }
     }
