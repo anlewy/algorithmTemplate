@@ -59,6 +59,7 @@ public:
 
     std::vector<Edge> getNodeEdges(int u);
     std::vector<Edge> getEdges();
+
     int getNodeNum() { return nodeNum; }
     int getEdgeNum() { return edgeNum; }
     bool isDirected() { return directed; }
