@@ -37,17 +37,19 @@ struct Path {
     }
 };
 
-class DirectedGraph {
+class Graph {
 private:
     int nodeNum;
     int edgeNum;
     std::vector<std::vector<Edge>> adj;
+    std::vector<Edge> edges;
 
 public:
-    DirectedGraph() {}
-    DirectedGraph(std::string filename);
-    DirectedGraph(std::string filename, bool directed);
-    std::vector<Edge> getEdges(int u);
+    Graph() {}
+    Graph(std::string filename);
+    Graph(std::string filename, bool directed);
+    std::vector<Edge> getNodeEdges(int u);
+    std::vector<Edge> getEdges();
     int getNodeNum() { return nodeNum; }
     int getEdgeNum() { return edgeNum; }
 };
@@ -57,10 +59,10 @@ public:
 // 函数声明
 
 // 最短路径算法
-int dijkstra(DirectedGraph &graph, int src, int dst);
-int dijkstraV2(DirectedGraph &graph, int src, int dst);
+int dijkstra(Graph &graph, int src, int dst);
+int dijkstraV2(Graph &graph, int src, int dst);
 
 // 最小生成树算法
-int kruskal(DirectedGraph &graph);
+int kruskal(Graph &graph);
 
 #endif //ALGORITHMTEMPLATE_GRAPH_H

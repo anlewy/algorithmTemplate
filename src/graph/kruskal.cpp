@@ -34,14 +34,12 @@ struct UnionFindSet {
 };
 
 
-int kruskal(DirectedGraph &graph) {
+int kruskal(Graph &graph) {
     int n = graph.getNodeNum();
     auto ufs = UnionFindSet(n);
     std::priority_queue<Edge, std::vector<Edge>, std::greater<Edge> > PQ;
-    for (int u = 0; u < n; u++) {
-        for (auto edge : graph.getEdges(u)) {
-            PQ.push(edge);
-        }
+    for (auto edge : graph.getEdges()) {
+        PQ.push(edge);
     }
 
     int ans = 0;

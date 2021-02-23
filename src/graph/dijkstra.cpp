@@ -10,7 +10,7 @@
 const int INF = 0x3f3f3f3f;
 
 // 对图的唯一要求是，能遍历某指定点的所有边
-int dijkstra(DirectedGraph &graph, int src, int dst) {
+int dijkstra(Graph &graph, int src, int dst) {
     int n = graph.getNodeNum();
     std::vector<int> dist(n, INF);
     std::vector<bool> been(n, false);
@@ -20,7 +20,7 @@ int dijkstra(DirectedGraph &graph, int src, int dst) {
     }
     dist[src] = 0;
     been[src] = true;
-    for (auto edge : graph.getEdges(src)) {
+    for (auto edge : graph.getNodeEdges(src)) {
         dist[edge.to] = edge.weight;
     }
 
@@ -36,7 +36,7 @@ int dijkstra(DirectedGraph &graph, int src, int dst) {
         if (minP == -1)
             break;
         been[minP] = true;
-        for (auto edge : graph.getEdges(minP)) {
+        for (auto edge : graph.getNodeEdges(minP)) {
             int v = edge.to;
             int w = edge.weight;
             if (dist[minP] + w < dist[v]) {
@@ -49,7 +49,7 @@ int dijkstra(DirectedGraph &graph, int src, int dst) {
 }
 
 
-int dijkstraV2(DirectedGraph &graph, int src, int dst) {
+int dijkstraV2(Graph &graph, int src, int dst) {
     int n = graph.getNodeNum();
     std::vector<int> dist(n, INF);
     std::vector<bool> been(n, false);
@@ -61,7 +61,7 @@ int dijkstraV2(DirectedGraph &graph, int src, int dst) {
     been[src] = true;
 
     std::priority_queue<Path, std::vector<Path>, std::greater<Path> > PQ;
-    for (auto edge : graph.getEdges(src)) {
+    for (auto edge : graph.getNodeEdges(src)) {
         dist[edge.to] = edge.weight;
         PQ.push(Path(src, edge.to, edge.weight));
     }
@@ -72,7 +72,7 @@ int dijkstraV2(DirectedGraph &graph, int src, int dst) {
             continue;
         }
         been[path.dst] = true;
-        for (auto edge : graph.getEdges(path.dst)) {
+        for (auto edge : graph.getNodeEdges(path.dst)) {
             if (dist[path.dst] + edge.weight < dist[edge.to]) {
                 dist[edge.to] = dist[path.dst] + edge.weight;
                 PQ.push(Path(src, edge.to, dist[edge.to]));

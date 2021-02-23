@@ -8,20 +8,22 @@
 #include <vector>
 #include <string>
 
-DirectedGraph::DirectedGraph(std::string filename) {
+Graph::Graph(std::string filename) {
     std::ifstream infile(filename);
     infile >> nodeNum >> edgeNum;  // n 是节点数量，编号0, 1, ..., n-1。 m是边的数量
     adj = std::vector<std::vector<Edge>>(nodeNum, std::vector<Edge>(0));
     int from, to, weight;
     for (int i = 0; i < edgeNum; i++) {
         infile >> from >> to >> weight;
-        adj[from].push_back(Edge(from, to, weight));
+        auto edge = Edge(from, to, weight);
+        edges.push_back(edge);
+        adj[from].push_back(edge);
     }
 }
 
-DirectedGraph::DirectedGraph(std::string filename, bool directed) {
+Graph::Graph(std::string filename, bool directed) {
     if (directed) {
-        DirectedGraph(filename);
+        Graph(filename);
     } else {
         std::ifstream infile(filename);
         infile >> nodeNum >> edgeNum;  // n 是节点数量，编号0, 1, ..., n-1。 m是边的数量
@@ -29,14 +31,20 @@ DirectedGraph::DirectedGraph(std::string filename, bool directed) {
         int u, v, weight;
         for (int i = 0; i < edgeNum; i++) {
             infile >> u >> v >> weight;
-            adj[u].push_back(Edge(u, v, weight));
-            adj[v].push_back(Edge(v, u, weight));
+            auto edge = Edge(u, v, weight);
+            edges.push_back(edge);
+            adj[u].push_back(edge);
+            adj[v].push_back(edge);
 
         }
     }
 }
 
-std::vector<Edge> DirectedGraph::getEdges(int u) {
+std::vector<Edge> Graph::getEdges() {
+    return edges;
+}
+
+std::vector<Edge> Graph::getNodeEdges(int u) {
     if (u < 0 || u >= nodeNum) {
         return std::vector<Edge>(0);
     }
