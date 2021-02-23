@@ -9,6 +9,7 @@
 #include "sort.h"
 #include "search.h"
 #include "graph.h"
+#include "tools.h"
 
 
 //void doMerge(int *arr, int left, int mid, int right, int *tmp);

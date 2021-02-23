@@ -11,7 +11,7 @@ using namespace std;
 
 vector<vector<pair<int, int>>> readGraph(string filename) {
     if (filename == "") {
-        filename = "../source/graph_input_1.in";
+        filename = "../static/graph_input_1.in";
     }
     ifstream infile(filename);
     int n, m;
@@ -31,7 +31,7 @@ vector<vector<pair<int, int>>> readGraph(string filename) {
 }
 
 TEST(testCase, testDijkstra) {
-    auto graph = Graph("../source/graph_input_1.in");
+    auto graph = Graph("../static/graph_input_1.in");
     int src = 0;
     int dst = 4;
     int res = dijkstra(graph, src, dst);
@@ -39,7 +39,7 @@ TEST(testCase, testDijkstra) {
 }
 
 TEST(testCase, testDijkstraV2) {
-    auto graph = Graph("../source/graph_input_1.in");
+    auto graph = Graph("../static/graph_input_1.in");
     int src = 0;
     int dst = 4;
     int res = dijkstraV2(graph, src, dst);
@@ -48,17 +48,36 @@ TEST(testCase, testDijkstraV2) {
 }
 
 TEST(testCase, testKruskal) {
-    auto graph = Graph("../source/graph_input_1.in", false);
+    auto graph = Graph("../static/graph_input_1.in", false);
     int res = kruskal(graph);
     cout << "res = " << res << endl;
     EXPECT_EQ(res, 26);
 }
 
 TEST(testCase, testPrim) {
-    auto graph = Graph("../source/graph_input_1.in", false);
+    auto graph = Graph("../static/graph_input_1.in", false);
     int res = prim(graph);
     cout << "res = " << res << endl;
     EXPECT_EQ(res, 26);
+}
+
+TEST(testCase, testBFS) {
+    auto graph = Graph("../static/graph_input_1.in", false);
+    vector<int> res = bfs(graph, 0);
+    for (int i = 0; i < res.size(); i++) {
+        cout << res[i] << " ";
+    }
+}
+
+TEST(testCase, testDFS) {
+    auto graph = Graph("../static/graph_input_2.in", false);
+    vector<vector<int>> res = dfs(graph);
+    for (auto vv : res) {
+        for (int i = 0; i < vv.size(); i++) {
+            cout << vv[i] << " ";
+        }
+        cout << endl;
+    }
 }
 
 

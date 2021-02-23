@@ -6,32 +6,7 @@
 #include <vector>
 #include <queue>
 #include "graph.h"
-
-// 并查集
-struct UnionFindSet {
-    int size;
-    std::vector<int> father;
-    UnionFindSet(int size): size(size) {
-        father = std::vector<int>(size, -1);
-        for (int i = 0; i < size; i++) {
-            father[i] = i;
-        }
-    }
-
-    int getGroup(int u) {
-        if (father[u] == u)
-            return u;
-        return father[u] = getGroup(father[u]);
-    }
-
-    bool inSameGroup(int u, int v) {
-        return getGroup(u) == getGroup(v);
-    }
-
-    void unionGroup(int u, int v) {
-        father[getGroup(u)] = getGroup(v);
-    }
-};
+#include "algos.h"
 
 
 int kruskal(Graph &graph) {

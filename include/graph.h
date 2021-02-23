@@ -78,4 +78,8 @@ int dijkstraV2(Graph &graph, int src, int dst);
 int kruskal(Graph &graph);
 int prim(Graph &graph);
 
+// 图的遍历
+std::vector<int> bfs(Graph &graph, int src);
+std::vector<std::vector<int>> dfs(Graph &graph);
+
 #endif //ALGORITHMTEMPLATE_GRAPH_H

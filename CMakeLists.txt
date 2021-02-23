@@ -25,6 +25,7 @@ aux_source_directory(./src SRC_LIST)
 aux_source_directory(./src/sort SRC_LIST)
 aux_source_directory(./src/search SRC_LIST)
 aux_source_directory(./src/graph SRC_LIST)
+aux_source_directory(./src/tools SRC_LIST)
 set(SOURCE_FLIES main.cpp )
 
 
