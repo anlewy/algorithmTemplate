@@ -31,7 +31,7 @@ vector<vector<pair<int, int>>> readGraph(string filename) {
 }
 
 TEST(testCase, testDijkstra) {
-    auto graph = readGraph("");
+    auto graph = DirectedGraph("../source/graph_input_1.in");
     int src = 0;
     int dst = 4;
     int res = dijkstra(graph, src, dst);
@@ -39,11 +39,12 @@ TEST(testCase, testDijkstra) {
 }
 
 TEST(testCase, testDijkstraV2) {
-    auto graph = readGraph("");
+    auto graph = DirectedGraph("../source/graph_input_1.in");
     int src = 0;
     int dst = 4;
     int res = dijkstraV2(graph, src, dst);
     cout << src << " --> " << dst << "  :  " << res << endl;
+    EXPECT_EQ(res, 13);
 }
 
 

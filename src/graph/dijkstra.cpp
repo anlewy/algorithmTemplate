@@ -10,8 +10,8 @@
 const int INF = 0x3f3f3f3f;
 
 // 对图的唯一要求是，能遍历某指定点的所有边
-int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst) {
-    int n = graph.size();
+int dijkstra(DirectedGraph &graph, int src, int dst) {
+    int n = graph.getNodeNum();
     std::vector<int> dist(n, INF);
     std::vector<bool> been(n, false);
     for (int i = 0; i < n; i++) {
@@ -20,9 +20,10 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int 
     }
     dist[src] = 0;
     been[src] = true;
-    for (auto edge : graph[src]) {
-        dist[edge.first] = edge.second;
+    for (auto edge : graph.getEdges(src)) {
+        dist[edge.to] = edge.weight;
     }
+
     for (int i = 0; i < n; i++) {
         int minV = INF;
         int minP = -1;
@@ -35,9 +36,9 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int 
         if (minP == -1)
             break;
         been[minP] = true;
-        for (auto edge : graph[minP]) {
-            int v = edge.first;
-            int w = edge.second;
+        for (auto edge : graph.getEdges(minP)) {
+            int v = edge.to;
+            int w = edge.weight;
             if (dist[minP] + w < dist[v]) {
                 dist[v] = dist[minP] + w;
             }
@@ -47,19 +48,9 @@ int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int 
     return dist[dst] == INF ? -1 : dist[dst];
 }
 
-struct distInfo {
-    int u;
-    int v;
-    int dist;
-    distInfo() {}
-    distInfo(int u, int v, int dist): u(u), v(v), dist(dist) { }
-    bool operator<(const distInfo &x) const {
-        return this->dist < x.dist;
-    }
-};
 
-int dijkstraV2(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst) {
-    int n = graph.size();
+int dijkstraV2(DirectedGraph &graph, int src, int dst) {
+    int n = graph.getNodeNum();
     std::vector<int> dist(n, INF);
     std::vector<bool> been(n, false);
     for (int i = 0; i < n; i++) {
@@ -69,23 +60,25 @@ int dijkstraV2(std::vector<std::vector<std::pair<int, int>>> &graph, int src, in
     dist[src] = 0;
     been[src] = true;
 
-    std::priority_queue<distInfo> PQ;
-    for (auto edge : graph[src]) {
-        PQ.push(distInfo(src, edge.first, edge.second));
+    std::priority_queue<Path, std::vector<Path>, std::greater<Path> > PQ;
+    for (auto edge : graph.getEdges(src)) {
+        dist[edge.to] = edge.weight;
+        PQ.push(Path(src, edge.to, edge.weight));
     }
 
     while (!PQ.empty()) {
-        auto di = PQ.top(); PQ.pop();
-        if (been[di.v]) {
+        auto path = PQ.top(); PQ.pop();
+        if (been[path.dst]) {
             continue;
         }
-        been[di.v] = true;
-        for (auto edge : graph[di.v]) {
-            if (dist[di.v] + edge.second < dist[edge.first]) {
-                PQ.push(distInfo(src, edge.first, dist[di.v] + edge.second));
+        been[path.dst] = true;
+        for (auto edge : graph.getEdges(path.dst)) {
+            if (dist[path.dst] + edge.weight < dist[edge.to]) {
+                dist[edge.to] = dist[path.dst] + edge.weight;
+                PQ.push(Path(src, edge.to, dist[edge.to]));
             }
         }
     }
 
-    return -1;
+    return dist[dst] == INF ? -1 : dist[dst];
 }

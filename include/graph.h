@@ -6,7 +6,51 @@
 #ifndef ALGORITHMTEMPLATE_GRAPH_H
 #define ALGORITHMTEMPLATE_GRAPH_H
 
-int dijkstra(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst);
-int dijkstraV2(std::vector<std::vector<std::pair<int, int>>> &graph, int src, int dst);
+#include <vector>
+#include <string>
+
+// 结构定义
+
+struct Edge {
+    int from, to;
+    int weight;
+    Edge():from(-1), to(-1), weight(-1) {}
+    Edge(int from, int to, int weight): from(from), to(to), weight(weight) {}
+};
+
+struct Path {
+    int src, dst;
+    int dist;
+    Path() {}
+    Path(int src, int dst, int dist): src(src), dst(dst), dist(dist) { }
+    bool operator>(const Path &x) const {
+        return this->dist > x.dist;
+    }
+    bool operator<(const Path &x) const {
+        return this->dist < x.dist;
+    }
+};
+
+class DirectedGraph {
+private:
+    int nodeNum;
+    int edgeNum;
+    std::vector<std::vector<Edge>> adj;
+
+public:
+    DirectedGraph() {}
+    DirectedGraph(std::string filename);
+    std::vector<Edge> getEdges(int u);
+    int getNodeNum() { return nodeNum; }
+    int getEdgeNum() { return edgeNum; }
+};
+
+
+
+// 函数声明
+
+
+int dijkstra(DirectedGraph &graph, int src, int dst);
+int dijkstraV2(DirectedGraph &graph, int src, int dst);
 
 #endif //ALGORITHMTEMPLATE_GRAPH_H
