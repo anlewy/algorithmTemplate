@@ -16,6 +16,12 @@ struct Edge {
     int weight;
     Edge():from(-1), to(-1), weight(-1) {}
     Edge(int from, int to, int weight): from(from), to(to), weight(weight) {}
+    bool operator>(const Edge &x) const {
+        return this->weight > x.weight;
+    }
+    bool operator<(const Edge &x) const {
+        return this->weight < x.weight;
+    }
 };
 
 struct Path {
@@ -40,6 +46,7 @@ private:
 public:
     DirectedGraph() {}
     DirectedGraph(std::string filename);
+    DirectedGraph(std::string filename, bool directed);
     std::vector<Edge> getEdges(int u);
     int getNodeNum() { return nodeNum; }
     int getEdgeNum() { return edgeNum; }
@@ -49,8 +56,11 @@ public:
 
 // 函数声明
 
-
+// 最短路径算法
 int dijkstra(DirectedGraph &graph, int src, int dst);
 int dijkstraV2(DirectedGraph &graph, int src, int dst);
+
+// 最小生成树算法
+int kruskal(DirectedGraph &graph);
 
 #endif //ALGORITHMTEMPLATE_GRAPH_H

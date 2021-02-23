@@ -47,6 +47,13 @@ TEST(testCase, testDijkstraV2) {
     EXPECT_EQ(res, 13);
 }
 
+TEST(testCase, testKruskal) {
+    auto graph = DirectedGraph("../source/graph_input_1.in");
+    int res = kruskal(graph);
+    cout << "res = " << res << endl;
+    EXPECT_EQ(res, 26);
+}
+
 
 int main() {
 
